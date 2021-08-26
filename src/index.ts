@@ -2,8 +2,11 @@ import "reflect-metadata";
 import express, { Request, Response } from "express";
 import "express-async-errors";
 
-import "./database";
+import {createConnection} from "./database";
 import { router } from "./routes";
+import 'dotenv/config';
+
+createConnection();
 
 const app = express();
 
@@ -23,7 +26,5 @@ app.use((err: Error, request: Request, response: Response) => {
 		message: "Internal server error.",
 	});
 });
-
-app.listen(3000, () => console.log("Listening on port 3000..."));
 
 export { app };
