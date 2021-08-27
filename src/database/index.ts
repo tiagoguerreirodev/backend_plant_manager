@@ -1,4 +1,3 @@
-
 import { Connection, createConnection as createTypeormConnection, getConnectionOptions } from "typeorm";
 
 export async function createConnection (): Promise<Connection> {
