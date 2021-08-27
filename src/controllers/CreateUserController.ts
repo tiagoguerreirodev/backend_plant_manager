@@ -1,15 +1,17 @@
 import { Request, Response } from "express";
+import { UsersRepository } from "../repositories/implementations/UsersRepository";
 import { CreateUserService } from "../services/CreateUserService";
 
 class CreateUserController {
 	async handle(request: Request, response: Response) {
 		const { name, email } = request.body;
 
-		const createUserService = new CreateUserService();
+		const usersRepository = new UsersRepository();
+		const createUserService = new CreateUserService(usersRepository);
 
-		const user = await createUserService.execute({ name, email });
+		await createUserService.execute({ name, email });
 
-		return response.json(user);
+		return response.send();
 	}
 }
 

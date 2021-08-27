@@ -1,5 +1,6 @@
 [
 	{
+		"name": "default",
 		"type": "postgres",
 		"host": "localhost",
 		"port": 5432,
@@ -21,11 +22,11 @@
 		"username": "postgres",
 		"password": "docker",
 		"database": "plantmanager_test",
-		"entities": ["../../src/entities/*.ts"],
-		"migrations": ["../../src/database/migrations/*.ts"],
+		"entities": ["src/entities/*.ts"],
+		"migrations": ["src/database/migrations/*.ts"],
 		"cli": {
-			"migrationsDir": "../../src/database/migrations",
-			"entitiesDir": "../../src/entities"
+			"migrationsDir": "src/database/migrations",
+			"entitiesDir": "src/entities"
 		}
 	}
 ]

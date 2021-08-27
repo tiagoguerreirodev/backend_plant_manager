@@ -1,6 +1,6 @@
 import request from "supertest";
 import { Connection, createConnection } from "typeorm";
-import { app } from "../../src/index";
+import { app } from "../app";
 
 let connection: Connection;
 
@@ -11,7 +11,7 @@ describe("User creation", () => {
 	});
 
 	afterAll(async () => {
-		await connection.undoLastMigration();
+		await connection.dropDatabase();
 		await connection.close();
 	});
 
@@ -23,6 +23,7 @@ describe("User creation", () => {
 
 		let response = await request(app).post("/createUser").send(testUser);
 
-		expect(response.body.name).toBe("tiago");
+		expect(response.status).toBe(200);
+		expect(response.body).toEqual(expect.objectContaining({ name: 'tiago' }))
 	});
 });

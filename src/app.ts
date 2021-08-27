@@ -5,6 +5,7 @@ import "express-async-errors";
 
 import "./database";
 import { router } from "./routes";
+import { AppError } from "./errors/AppError";
 
 const app = express();
 
@@ -13,8 +14,8 @@ app.use(express.json());
 app.use(router);
 
 app.use((err: Error, request: Request, response: Response) => {
-	if (err instanceof Error) {
-		response.status(400).json({
+	if (err instanceof AppError) {
+		response.status(err.statusCode).json({
 			error: err.message,
 		});
 	}
