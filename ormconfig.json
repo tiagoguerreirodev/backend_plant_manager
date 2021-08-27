@@ -1,31 +1,17 @@
-[
-	{
-		"type": "postgres",
-		"host": "localhost",
-		"port": 5432,
-		"username": "postgres",
-		"password": "docker",
-		"database": "plantmanager",
-		"entities": ["src/entities/*.ts"],
-		"migrations": ["src/database/migrations/*.ts"],
-		"cli": {
-			"migrationsDir": "src/database/migrations",
-			"entitiesDir": "src/entities"
-		}
-	},
-	{
-		"name": "test",
-		"type": "postgres",
-		"host": "localhost",
-		"port": 5432,
-		"username": "postgres",
-		"password": "docker",
-		"database": "plantmanager_test",
-		"entities": ["../../src/entities/*.ts"],
-		"migrations": ["../../src/database/migrations/*.ts"],
-		"cli": {
-			"migrationsDir": "../../src/database/migrations",
-			"entitiesDir": "../../src/entities"
-		}
-	}
-]
+{
+	"type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "database": "plantmanager",
+  "username": "postgres",
+  "password": "plantmanager",
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "entities": [
+    "./src/entities/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}

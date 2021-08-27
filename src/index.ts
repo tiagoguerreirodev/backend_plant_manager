@@ -3,8 +3,11 @@ import "reflect-metadata";
 import express, { Request, Response } from "express";
 import "express-async-errors";
 
-import "./database";
+import {createConnection} from "./database";
 import { router } from "./routes";
+import 'dotenv/config';
+
+createConnection();
 
 const app = express();
 
