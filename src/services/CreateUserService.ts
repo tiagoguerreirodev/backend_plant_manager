@@ -4,16 +4,17 @@ import { IUsersRepository } from "../repositories/IUsersRepository";
 interface ICreateUserRequest {
 	name: string;
 	email: string;
+	id: string;
 }
 
 class CreateUserService {
 	private usersRepository: IUsersRepository;
-	
+
 	constructor(usersRepository: IUsersRepository) {
 		this.usersRepository = usersRepository;
 	}
-	
-	async execute({ name, email }: ICreateUserRequest) {
+
+	async execute({ name, email, id }: ICreateUserRequest) {
 		if (!email) {
 			throw new AppError("Incorrect email.");
 		}
@@ -27,6 +28,7 @@ class CreateUserService {
 		await this.usersRepository.create({
 			name,
 			email,
+			id,
 		});
 	}
 }

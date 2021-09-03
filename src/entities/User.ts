@@ -1,10 +1,10 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 
 @Entity("users")
 export class User {
 	@PrimaryColumn()
-	readonly id: string;
+	id: string;
 
 	@Column()
 	name: string;
@@ -12,9 +12,9 @@ export class User {
 	@Column()
 	email: string;
 
-	constructor() {
-		if (!this.id) {
-			this.id = uuid();
-		}
-	}
+	// constructor() {
+	// 	if (!this.id) {
+	// 		this.id = uuid();
+	// 	}
+	// }
 }

@@ -1,22 +1,24 @@
 import { User } from "../../entities/User";
-import { ICreateUserDTO, IUsersRepository } from "../../repositories/IUsersRepository";
+import {
+	ICreateUserDTO,
+	IUsersRepository,
+} from "../../repositories/IUsersRepository";
 
 export class UsersRepositoryMock implements IUsersRepository {
-  private users: User[];
+	private users: User[];
 
-  constructor() {
-    this.users = [];
-  }
-  
-  async create(data: ICreateUserDTO): Promise<void> {
-    const user = new User();
+	constructor() {
+		this.users = [];
+	}
 
-    Object.assign(user, data);
+	async create(data: ICreateUserDTO): Promise<void> {
+		const user = new User();
 
-    this.users.push(user);
-  }
-  async findByEmail(email: string): Promise<User> {
-    return this.users.find(user => user.email === email);
-  }
+		Object.assign(user, data);
 
+		this.users.push(user);
+	}
+	async findByEmail(email: string): Promise<User> {
+		return this.users.find((user) => user.email === email);
+	}
 }
