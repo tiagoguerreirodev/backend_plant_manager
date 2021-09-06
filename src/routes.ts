@@ -11,6 +11,6 @@ const createHumidityController = new CreateHumidityController();
 
 router.post("/users", createUserController.handle);
 router.post("/plants", createPlantController.handle);
-router.post("/data", createHumidityController.handle);
+router.post("/humidity", createHumidityController.handle);
 
 export { router };

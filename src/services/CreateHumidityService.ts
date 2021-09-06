@@ -13,10 +13,12 @@ class CreateHumidityService {
 	}
 
 	async execute({ humidity, plant_id }: ICreateHumidityRequest) {
-		await this.humiditiesRepository.create({
+		const humidityCreated = await this.humiditiesRepository.create({
 			humidity,
 			plant_id,
 		});
+
+		return humidityCreated;
 	}
 }
 export { CreateHumidityService };

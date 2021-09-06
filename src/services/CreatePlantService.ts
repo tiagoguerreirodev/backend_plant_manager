@@ -21,11 +21,13 @@ class CreatePlantService {
 			throw new AppError("Plant already exists.");
 		}
 
-		await this.plantsRepository.create({
+		const plant = await this.plantsRepository.create({
 			id,
 			owner_id,
 			category_id,
 		});
+
+		return plant;
 	}
 }
 

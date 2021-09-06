@@ -25,11 +25,13 @@ class CreateUserService {
 			throw new AppError("User already exists.");
 		}
 
-		await this.usersRepository.create({
+		const user = await this.usersRepository.create({
 			name,
 			email,
 			id,
 		});
+
+		return user;
 	}
 }
 
