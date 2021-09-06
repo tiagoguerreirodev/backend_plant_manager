@@ -3,25 +3,24 @@ import { User } from "../../entities/User";
 import { ICreateUserDTO, IUsersRepository } from "../IUsersRepository";
 
 class UsersRepository implements IUsersRepository {
-  private repository: Repository<User>;
-  
-  constructor() {
-    this.repository = getRepository(User)
-  }
-  
-  async create(data: ICreateUserDTO): Promise<void> {
-    const user = new User();
+	private repository: Repository<User>;
 
-    Object.assign(user, data);
+	constructor() {
+		this.repository = getRepository(User);
+	}
 
-    const userCreated = this.repository.create(user);
+	async create(data: ICreateUserDTO): Promise<void> {
+		const user = new User();
 
-    await this.repository.save(userCreated);
-  }
-  async findByEmail(email: string): Promise<User> {
-    return this.repository.findOne({ email });
-  }
-  
+		Object.assign(user, data);
+
+		const userCreated = this.repository.create(user);
+
+		await this.repository.save(userCreated);
+	}
+	async findByEmail(email: string): Promise<User> {
+		return this.repository.findOne({ email });
+	}
 }
 
 export { UsersRepository };

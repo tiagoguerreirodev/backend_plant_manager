@@ -12,6 +12,14 @@ export class CreatePlant1630686307568 implements MigrationInterface {
 						isPrimary: true,
 					},
 					{
+						name: "category_id",
+						type: "integer",
+					},
+					{
+						name: "owner_id",
+						type: "varchar",
+					},
+					{
 						name: "updated_at",
 						type: "timestamp",
 						default: "now()",

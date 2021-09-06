@@ -1,6 +1,6 @@
 import "dotenv/config";
 import "reflect-metadata";
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 
 import "./database";
@@ -13,17 +13,19 @@ app.use(express.json());
 
 app.use(router);
 
-app.use((err: Error, request: Request, response: Response) => {
-	if (err instanceof AppError) {
-		response.status(err.statusCode).json({
-			error: err.message,
+app.use(
+	(err: Error, request: Request, response: Response, next: NextFunction) => {
+		if (err instanceof AppError) {
+			response.status(err.statusCode).json({
+				error: err.message,
+			});
+		}
+
+		return response.status(500).json({
+			status: "error",
+			message: "Internal server error.",
 		});
 	}
-
-	return response.status(500).json({
-		status: "error",
-		message: "Internal server error.",
-	});
-});
+);
 
 export { app };

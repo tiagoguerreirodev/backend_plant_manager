@@ -3,7 +3,6 @@ import { IPlantsRepository } from "../repositories/IPlantsRepository";
 
 interface ICreatePlantRequest {
 	id: string;
-	name: string;
 	owner_id: string;
 	category_id: number;
 }
@@ -15,7 +14,7 @@ class CreatePlantService {
 		this.plantsRepository = plantsRepository;
 	}
 
-	async execute({ id, name, owner_id, category_id }: ICreatePlantRequest) {
+	async execute({ id, owner_id, category_id }: ICreatePlantRequest) {
 		const plantAlreadyExists = await this.plantsRepository.findById(id);
 
 		if (plantAlreadyExists) {
@@ -24,7 +23,6 @@ class CreatePlantService {
 
 		await this.plantsRepository.create({
 			id,
-			name,
 			owner_id,
 			category_id,
 		});
