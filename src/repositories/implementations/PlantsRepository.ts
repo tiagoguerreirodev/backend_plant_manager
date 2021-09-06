@@ -24,6 +24,13 @@ class PlantsRepository implements IPlantsRepository {
 	async findById(id: string): Promise<Plant> {
 		return this.repository.findOne({ id });
 	}
+
+	async listAllFromUser(owner_id: string): Promise<Plant[]> {
+		return this.repository.find({
+			where: { owner_id },
+			relations: ["CategoryID"],
+		});
+	}
 }
 
 export { PlantsRepository };

@@ -9,4 +9,5 @@ export interface ICreatePlantDTO {
 export interface IPlantsRepository {
 	create(data: ICreatePlantDTO): Promise<Plant>;
 	findById(id: string): Promise<Plant | undefined>;
+	listAllFromUser(owner_id: string): Promise<Plant[]>;
 }
