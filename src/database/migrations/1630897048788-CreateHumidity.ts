@@ -17,7 +17,7 @@ export class CreateHumidity1630897048788 implements MigrationInterface {
 					},
 					{
 						name: "plant_id",
-						type: "uuid",
+						type: "varchar",
 					},
 				],
 				foreignKeys: [

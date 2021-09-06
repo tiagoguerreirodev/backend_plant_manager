@@ -9,9 +9,9 @@ class CreatePlantController {
 		const plantsRepository = new PlantsRepository();
 		const createPlantService = new CreatePlantService(plantsRepository);
 
-		await createPlantService.execute({ id, owner_id, category_id });
+		const plant = await createPlantService.execute({ id, owner_id, category_id });
 
-		return response.send();
+		return response.json(plant);
 	}
 }
 

@@ -9,7 +9,7 @@ class PlantsRepository implements IPlantsRepository {
 		this.repository = getRepository(Plant);
 	}
 
-	async create(data: ICreatePlantDTO): Promise<void> {
+	async create(data: ICreatePlantDTO): Promise<Plant> {
 		const plant = new Plant();
 
 		Object.assign(plant, data);
@@ -17,6 +17,8 @@ class PlantsRepository implements IPlantsRepository {
 		const plantCreated = this.repository.create(plant);
 
 		await this.repository.save(plantCreated);
+
+		return plantCreated;
 	}
 
 	async findById(id: string): Promise<Plant> {

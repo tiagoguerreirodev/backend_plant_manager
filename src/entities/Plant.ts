@@ -8,12 +8,11 @@ import {
 } from "typeorm";
 import { Category } from "./Category";
 import { User } from "./User";
-import { v4 as uuid } from "uuid";
 
 @Entity("plants")
 export class Plant {
 	@PrimaryColumn()
-	readonly id: string;
+	id: string;
 
 	@Column()
 	category_id: number;
@@ -31,10 +30,4 @@ export class Plant {
 
 	@UpdateDateColumn()
 	updated_at: Date;
-
-	constructor() {
-		if (!this.id) {
-			this.id = uuid();
-		}
-	}
 }

@@ -8,7 +8,7 @@ export class CreatePlant1630686307568 implements MigrationInterface {
 				columns: [
 					{
 						name: "id",
-						type: "uuid",
+						type: "varchar",
 						isPrimary: true,
 					},
 					{
