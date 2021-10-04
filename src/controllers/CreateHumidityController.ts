@@ -6,6 +6,8 @@ class CreateHumidityController {
 	async handle(request: Request, response: Response) {
 		const { humidity, plant_id } = request.body;
 
+		console.log(humidity, plant_id)
+
 		const humiditiesRepository = new HumiditiesRepository();
 		const createHumidityService = new CreateHumidityService(
 			humiditiesRepository

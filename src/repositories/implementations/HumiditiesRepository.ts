@@ -22,8 +22,14 @@ class HumiditiesRepository implements IHumidityRepository {
 		await this.repository.save(humidityCreated);
 	}
 
-	async findById(id: string): Promise<Humidity> {
-		return this.repository.findOne({ id });
+	async getRecentById(id: string): Promise<Humidity[]> {
+		const humidity = await this.repository.find({ plant_id: id });
+
+		if (humidity.length > 30) {
+			return humidity.slice(30);
+		}
+
+		return humidity;
 	}
 }
 

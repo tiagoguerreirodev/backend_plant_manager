@@ -7,5 +7,5 @@ export interface ICreateHumidityDTO {
 
 export interface IHumidityRepository {
 	create(data: ICreateHumidityDTO): Promise<void>;
-	findById(id: string): Promise<Humidity | undefined>;
+	getRecentById(id: string): Promise<Humidity[]>;
 }
